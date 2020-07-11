@@ -1,0 +1,14 @@
+t = [sind(30) * cosd(45), sind(30) * sind(45), cosd(30)];
+b = [0;0;1];
+psi = deg2rad(45);
+v = cross(b,t);
+s = norm(v);
+c = dot(b,t);
+phiB = psi;
+uB = b;
+uBhat = vector2ssMat(uB);
+I = eye(3);
+rotA = I+vector2ssMat(v)+(vector2ssMat(v)^2)*((1-c)/s^2);
+rotB = I*cos(phiB)+uB*transpose(uB)*(1-cos(phiB))+uBhat*sin(phiB);
+Rdes = rotA*rotB;
+disp(Rdes);
